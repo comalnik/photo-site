@@ -3,6 +3,8 @@ import glob
 import os
 import piexif
 from PIL import Image
+from PIL.ExifTags import TAGS
+
 app = Flask(__name__)
 #Todo---Make images redirect to custom route in flask. The route has a html template that displays full size image and possibly metadata.
 
@@ -42,6 +44,36 @@ def home():
 
     thumbslater = [os.path.basename(x) for x in glob.glob(cdpath+"/static/thumbs/*")]
     return render_template("index.html", imges=thumbslater)
+
+
+@app.route("/<image>")
+def image(image):
+    cdpath = os.path.dirname(os.path.realpath(__file__))
+    image_path = cdpath + "/static/images/" + image
+    def get_image_exif(image_path):
+        image = Image.open(image_path)
+        exif_data = image._getexif()
+        
+        if exif_data is None:
+            return []
+        
+        exif_list = []
+        
+        for tag_id, value in exif_data.items():
+            tag_name = TAGS.get(tag_id, tag_id)
+            #exif_list.append((tag_name, value))
+            if  len(str(value)) <= 150:
+                exif_list.append((tag_name, value))
+        
+        return exif_list
+
+
+    exif_data_list = get_image_exif(image_path)
+    print(exif_data_list)
+
+
+    return render_template("image.html", link=image, metadata=exif_data_list)
+
 
 
 if __name__ == '__main__':

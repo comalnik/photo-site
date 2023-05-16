@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foto Galerija</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='image.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+
+<style>
+
+body {
+    background-color:#181926;
+    background-image: url("{{url_for('static', filename='images/'+link)}}");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+</style>
+
+
+</head>
+
+<body>
+    <input type="checkbox" id="sidebar-toggle" style="opacity:0;">
+    <label for="sidebar-toggle" class="sidebar-toggle-label">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    
+    <div class="sidebar">
+        <div class="container">
+        {% for tag, value in metadata %}
+ 
+
+        <p><strong>{{ tag }}:</strong> {{ value }}</p>
+        
+        {% endfor %}
+
+    </div>
+
+
+    </div>
+</body>
+
+</html>

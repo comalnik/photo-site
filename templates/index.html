@@ -7,13 +7,15 @@
     <meta charset="UTF-8" />
 </head>
 
-<body>
+<body style="background-color:#181926;">
 <div class="gallery">
         
 
         {% for i in imges %}
         <div class="image">
-        <image src="{{url_for('static', filename='thumbs/'+i)}}">
+            <a href="/{{i}}">
+                <image src="{{url_for('static', filename='thumbs/'+i)}}">
+            </a>
         </div>
         
         {% endfor %}

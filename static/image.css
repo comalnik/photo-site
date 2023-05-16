@@ -1,0 +1,62 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -450px;
+    width: 450px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: left 0.3s ease-in-out;
+    overflow: hidden;
+
+  }
+  .sidebar-toggle-label {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .sidebar-toggle-label span {
+    display: block;
+    width: 60px;
+    height: 9px;
+    margin-bottom: 9px;
+    background-color: #b7bdf8;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 9px;
+  }
+  /* hell */
+  input[type="checkbox"]:checked ~ .sidebar {
+    left: 0;
+  }
+  
+  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:first-child {
+    transform:rotate(0deg)translate(0px, 35px);
+  }
+  
+  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:last-child {
+    transform: rotate(90deg) ;
+  
+  }
+  
+  .container {
+    margin-top: 105px;
+    height:88%;
+    width:96%;
+    margin-left: 15px;
+    color: #f4dbd6;
+    font-size: 33px;
+    overflow: auto;
+    word-wrap: break-word;
+  }
+  .container::-webkit-scrollbar { 
+    display: none; 
+}
+
+
