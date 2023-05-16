@@ -6,7 +6,6 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 
 app = Flask(__name__)
-#Todo---Make images redirect to custom route in flask. The route has a html template that displays full size image and possibly metadata.
 
 @app.route("/")
 def home():
@@ -65,15 +64,9 @@ def image(image):
                 exif_list.append((tag_name, value))
         
         return exif_list
-
-
     exif_data_list = get_image_exif(image_path)
-    print(exif_data_list)
-
 
     return render_template("image.html", link=image, metadata=exif_data_list)
 
-
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

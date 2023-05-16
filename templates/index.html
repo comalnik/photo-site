@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Foto Galerija</title>
+    <title>Photo gallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
+    
+    <style>
+
+        @font-face {
+            font-family: Overpass;
+            src: url("{{url_for('static', filename='overpass-mono-regular.otf')}}") format("opentype");
+        }
+        
+        @font-face {
+            font-family: Overpass;
+            font-weight: light;
+            src: url("{{url_for('static', filename='overpass-mono-light.otf')}}") format("opentype");
+        }
+        
+        </style>
+
 </head>
 
+
 <body style="background-color:#181926;">
+
+<h1 class="title" style="font-family:overpass, light;">Photo gallery</h1>
+
+<div class="divider-line"></div>
+
 <div class="gallery">
         
 
@@ -21,7 +43,6 @@
         {% endfor %}
           
     </div>
-
 
 </div>
 </body>

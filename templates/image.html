@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Foto Galerija</title>
+    <title>Photo gallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='image.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
@@ -23,9 +23,7 @@ body {
     src: url("{{url_for('static', filename='overpass-mono-light.otf')}}") format("opentype");
 }
 
-
 </style>
-
 
 </head>
 
@@ -35,7 +33,7 @@ body {
         <img src="{{url_for('static', filename='images/'+link)}}">
     </div>
 
-
+   
 
     <input type="checkbox" id="sidebar-toggle" style="opacity:0;">
     <label for="sidebar-toggle" class="sidebar-toggle-label">
@@ -44,7 +42,10 @@ body {
       <span></span>
     </label>
     
+    
     <div class="sidebar">
+
+        <a class="homebtn" href="/" style="font-family: Overpass, light;">HOME</a>
         <div class="container" style="font-family: Overpass, light;">
         {% for tag, value in metadata %}
  
@@ -55,8 +56,8 @@ body {
 
     </div>
 
-
     </div>
+    
 </body>
 
 </html>
