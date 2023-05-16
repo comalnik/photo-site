@@ -61,7 +61,6 @@ def image(image):
         
         for tag_id, value in exif_data.items():
             tag_name = TAGS.get(tag_id, tag_id)
-            #exif_list.append((tag_name, value))
             if  len(str(value)) <= 150:
                 exif_list.append((tag_name, value))
         
