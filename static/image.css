@@ -4,11 +4,13 @@ body, html {
     margin: 0;
   }
 
+
 .sidebar {
     position: fixed;
     top: 0;
-    left: -500px;
-    width: 500px;
+    left: -100%;
+    width: 100%;
+    max-width: 500px;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);;
     backdrop-filter: blur(20px);
@@ -17,13 +19,16 @@ body, html {
     overflow: hidden;
 
   }
+
+
   .sidebar-toggle-label {
     position: fixed;
-    top: 20px;
+    top: 27px;
     left: 20px;
     cursor: pointer;
     z-index: 999;
   }
+
   .sidebar-toggle-label span {
     display: block;
     width: 40px;
@@ -38,27 +43,51 @@ body, html {
     left: 0;
   }
   
-  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:first-child {
-    transform:rotate(0deg)translate(0px, 23px);
-  }
-  
-  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  input[type="checkbox"]:checked ~ .sidebar-toggle-label span:last-child {
-    transform: rotate(90deg) ;
-  
-  }
-  
+
+ 
+
+
+
+
+.sidebar-toggle-label:hover span {
+  transform: scaleX(1.1);
+}
+
+
+#sidebar-toggle {
+  display: none;
+}
+
+#sidebar-toggle:checked ~ .sidebar {
+  left: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: left 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+
+
+
+
 
   .container {
-    margin-top: 105px;
-    height:88%;
+    margin-top: 85px;
+    height:94%;
     width:97%;
     margin-left: 15px;
     color: #b7bdf8;
-    font-size: 33px;
+    font-size: 25px;
     word-wrap: break-word;
     overflow: auto;
 
@@ -91,11 +120,22 @@ body, html {
     position: fixed;
     width: 10px;
     height: 10px;
-    margin-top: 18px;
+    margin-top: 4px;
     margin-left: 90px;
     color: #b7bdf8;
     font-size: 50px;
 }
 
 
+.gradient-button {
+  background: linear-gradient(to right, #ffb084, #4685ff);
+  color: #fff;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rainbowText:hover{background-image: linear-gradient(to right, #ffb084, #4685ff, #4685ff, #ffb084 );animation: gradient-border 2s linear infinite;background-size: 400% 100%;}
+@keyframes gradient-border{0%, 200% {background-position: 0 0;}99.999999999999999% {background-position: -130% 0;}}
 

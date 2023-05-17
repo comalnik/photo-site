@@ -55,7 +55,6 @@ def image(image):
         
         if exif_data is None:
             return []
-        
         exif_list = []
         
         for tag_id, value in exif_data.items():
@@ -64,8 +63,11 @@ def image(image):
                 exif_list.append((tag_name, value))
         
         return exif_list
-    exif_data_list = get_image_exif(image_path)
-
+    try:
+        exif_data_list = get_image_exif(image_path)
+    except:
+        exif_data_list = ""
+    
     return render_template("image.html", link=image, metadata=exif_data_list)
 
 if __name__ == '__main__':

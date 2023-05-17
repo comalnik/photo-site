@@ -55,12 +55,14 @@
   border: none;
   height: 2px;
   background-color: white;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin-top: 4px;
+  margin-bottom: 9px;
 }
 
 .title {
  color: #a6da95;
  font-size: 60px;
  text-align: center;
+ margin-top: 8px;
+ margin-bottom: 8px;
 }

@@ -45,14 +45,14 @@ body {
     
 
     <div class="sidebar">
-        <a class="homebtn" href="/" style="font-family: Overpass, light;">HOME</a>
+        <a class="homebtn" href="/" style="font-family: Overpass;"><button style="font-family: Overpass; font-size:45%;" class="gradient-button rainbowText">GALLERY</button></a>
 
         
         <div class="container" style="font-family: Overpass, light;">
         {% for tag, value in metadata %}
  
 
-        <p><strong>{{ tag }}:</strong> {{ value }}</p>
+        <p><strong style="color:#a6da95;">{{ tag }}:</strong> {{ value }}</p>
         
         {% endfor %}
 
