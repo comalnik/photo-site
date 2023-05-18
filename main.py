@@ -67,8 +67,7 @@ def image(image):
     try:
         exif_data = get_image_exif(image_path)
         #exif data filtering
-        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in ("Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake"
-"LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in ("Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
 )]
     except:
         exif_data_list = ""
