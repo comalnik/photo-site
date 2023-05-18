@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-
+    #image resizze max width
     maxsize = 1000
     cdpath = os.path.dirname(os.path.realpath(__file__))
     images = [os.path.basename(x) for x in glob.glob(cdpath+"/static/images/*")]
@@ -26,6 +26,7 @@ def home():
         resized_image = image.resize((new_width, new_height))
         resized_image.save(output_path, optimize=True, quality=80)
 
+    #remove gps data
     for i in images:
         img = piexif.load(cdpath+'/static/images/'+i)
         if 'GPS' in img:
@@ -33,7 +34,7 @@ def home():
             exif_bytes = piexif.dump(img)
             piexif.insert(exif_bytes, cdpath+'/static/images/'+i)
 
-
+    #checks for new images, and makes thumbnails
     if set(images) != set(thumbs):
         uniques = set(images) - set(thumbs)
         for i in uniques:
@@ -64,10 +65,13 @@ def image(image):
         
         return exif_list
     try:
-        exif_data_list = get_image_exif(image_path)
+        exif_data = get_image_exif(image_path)
+        #exif data filtering
+        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in ("Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake"
+"LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+)]
     except:
         exif_data_list = ""
-    
     return render_template("image.html", link=image, metadata=exif_data_list)
 
 if __name__ == '__main__':

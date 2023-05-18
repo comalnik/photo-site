@@ -128,7 +128,7 @@ body, html {
 
 
 .gradient-button {
-  background: linear-gradient(to right, #ffb084, #4685ff);
+  background: linear-gradient(to right, #ffb084, #b7bdf8);
   color: #fff;
   padding: 7px 14px;
   border: none;
@@ -136,6 +136,6 @@ body, html {
   cursor: pointer;
 }
 
-.rainbowText:hover{background-image: linear-gradient(to right, #ffb084, #4685ff, #4685ff, #ffb084 );animation: gradient-border 2s linear infinite;background-size: 400% 100%;}
+.rainbowText:hover{background-image: linear-gradient(to right, #ffb084, #b7bdf8, #b7bdf8, #ffb084 );animation: gradient-border 2s linear infinite;background-size: 400% 100%;}
 @keyframes gradient-border{0%, 200% {background-position: 0 0;}99.999999999999999% {background-position: -130% 0;}}
 
