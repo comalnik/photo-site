@@ -33,27 +33,25 @@
 <div class="gallery">
         
 
-    {% for image_name in sorted_images %}
-    {% if image_name['height'] < image_name['width'] %}
-
-
+        {% for i in wide %}
+        
         <div class="image">
-            <a href="/{{image_name['name']}}">
-                <image src="{{url_for('static', filename='thumbs/'+image_name['name'])}}">
+            <a href="/{{i}}">
+                <image src="{{url_for('static', filename='thumbs/'+i)}}">
+            </a>
+        </div>
+        
+        {% endfor %}
+
+        {% for i in high %}
+        <div class="image">
+            <a href="/{{i}}">
+                <image src="{{url_for('static', filename='thumbs/'+i)}}">
             </a>
         </div>
 
-        {% elif image_name['width'] <= image_name['height'] %}
-        <div class="image">
-            <a href="/{{image_name['name']}}">
-                <image src="{{url_for('static', filename='thumbs/'+image_name['name'])}}">
-            </a>
-        </div>
-
-        {% endif %}
 
         {% endfor %}
-          
     </div>
 
 </div>

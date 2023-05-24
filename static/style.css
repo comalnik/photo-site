@@ -50,7 +50,6 @@
   }
 }
 
-
 @media (min-width: 4000px) {
   .gallery {
     display: grid;
@@ -97,6 +96,7 @@
  margin-top: 8px;
  margin-bottom: 8px;
 }
+
 
 /* scrollbar */
 ::-webkit-scrollbar {
