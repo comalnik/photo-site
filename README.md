@@ -1,2 +1,6 @@
 # Photo site
-A simple photo gallery web app written in flask, without javascript.
+A simple image gallery web app written in Flask, without javascript.
+Features:
+- Auto location data removal
+- Auto thumbnail compression
+- Fullscreen image display with metadata

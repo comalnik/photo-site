@@ -5,17 +5,21 @@ import piexif
 from PIL import Image
 from PIL.ExifTags import TAGS
 
+MAXSIZE = 1000
+EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    #image resizze max width
-    maxsize = 1000
+    #image resize max width
+    maxsize = MAXSIZE
     cdpath = os.path.dirname(os.path.realpath(__file__))
     images = [os.path.basename(x) for x in glob.glob(cdpath+"/static/images/*")]
     thumbs = [os.path.basename(x) for x in glob.glob(cdpath+"/static/thumbs/*")]
     imagesdir = cdpath + "/static/images/"
     thumbsdir = cdpath + "/static/thumbs/"
+    
 
     def resize_image(input_path, output_path, max_size):
         image = Image.open(input_path)
@@ -42,8 +46,24 @@ def home():
             savedir = thumbsdir + i
             resize_image(imgdir, savedir, maxsize)
 
+    #displays landscape images before portrait images
+    image_data = []
+    for image_name in images:
+        image_path = f"{imagesdir}/{image_name}"
+        image = Image.open(image_path)
+        width, height = image.size
+
+        image_data.append({
+            "name": image_name,
+            "width": width,
+            "height": height
+        })
+
+    sorted_images = sorted(image_data, key=lambda x: (x["width"] > x["height"], x["name"]))
+    reversed_images = reversed(sorted_images)
+
     thumbslater = [os.path.basename(x) for x in glob.glob(cdpath+"/static/thumbs/*")]
-    return render_template("index.html", imges=thumbslater)
+    return render_template("index.html", sorted_images=reversed_images)
 
 
 @app.route("/<image>")
@@ -67,7 +87,7 @@ def image(image):
     try:
         exif_data = get_image_exif(image_path)
         #exif data filtering
-        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in ("Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in (EXIFPARAMS
 )]
     except:
         exif_data_list = ""
