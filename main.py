@@ -7,7 +7,7 @@ from PIL.ExifTags import TAGS
 
 
 MAXSIZE = 1000
-EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+EXIFPARAMS = "Artist", "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
 
 
 
@@ -79,8 +79,7 @@ def image(image):
         
         for tag_id, value in exif_data.items():
             tag_name = TAGS.get(tag_id, tag_id)
-            if  len(str(value)) <= 150:
-                exif_list.append((tag_name, value))
+            exif_list.append((tag_name, value))
         
         return exif_list
     try:
