@@ -6,7 +6,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 
 MAXSIZE = 1000
-EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+EXIFPARAMS = "Artist", "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
 
 
 
