@@ -5,12 +5,18 @@ import piexif
 from PIL import Image
 from PIL.ExifTags import TAGS
 
+MAXSIZE = 1000
+EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
+
+
+
+
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    #image resizze max width
-    maxsize = 1000
+    #image resize max width
+    maxsize = MAXSIZE
     cdpath = os.path.dirname(os.path.realpath(__file__))
     images = [os.path.basename(x) for x in glob.glob(cdpath+"/static/images/*")]
     thumbs = [os.path.basename(x) for x in glob.glob(cdpath+"/static/thumbs/*")]
@@ -67,8 +73,7 @@ def image(image):
     try:
         exif_data = get_image_exif(image_path)
         #exif data filtering
-        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in ("Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
-)]
+        exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in (EXIFPARAMS)]
     except:
         exif_data_list = ""
     return render_template("image.html", link=image, metadata=exif_data_list)

@@ -139,3 +139,27 @@ body, html {
 .rainbowText:hover{background-image: linear-gradient(to right, #ffb084, #b7bdf8, #b7bdf8, #ffb084 );animation: gradient-border 2s linear infinite;background-size: 400% 100%;}
 @keyframes gradient-border{0%, 200% {background-position: 0 0;}99.999999999999999% {background-position: -130% 0;}}
 
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #1e2030;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #8087a2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #939ab7;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #24273a;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: #363a4f;
+}
