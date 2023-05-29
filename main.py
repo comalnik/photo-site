@@ -3,9 +3,11 @@ import glob
 import os
 import piexif
 from PIL import Image
+from PIL import ImageFile
 from PIL.ExifTags import TAGS
 import exifread
 
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 MAXSIZE = 1000
 EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength","Artist", "FocalLengthIn35mmFilm"
