@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo gallery</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='image.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+
+<style>
+
+body {
+    background-color:#181926;
+}
+@font-face {
+    font-family: Overpass;
+    src: url("{{url_for('static', filename='overpass-mono-regular.otf')}}") format("opentype");
+}
+
+@font-face {
+    font-family: Overpass;
+    font-weight: light;
+    src: url("{{url_for('static', filename='overpass-mono-light.otf')}}") format("opentype");
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="image">
+        <img src="{{url_for('static', filename='images/'+link)}}">
+    </div>
+
+   
+
+    <input type="checkbox" id="sidebar-toggle" style="opacity:0;">
+    <label for="sidebar-toggle" class="sidebar-toggle-label">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    
+    
+
+    <div class="sidebar">
+        <a class="homebtn" href="/" style="font-family: Overpass;"><button style="font-family: Overpass; font-size:45%;" class="gradient-button rainbowText">GALLERY</button></a>
+
+        
+        <div class="container" style="font-family: Overpass, light;">
+        {% for tag, value in metadata %}
+ 
+
+        <p><strong style="color:#a6da95;">{{ tag }}:</strong> {{ value }}</p>
+        
+        {% endfor %}
+
+        {% if film_sim != ""%}
+        <p><strong style="color:#eed49f;">Film simulation:</strong> {{ film_sim }}</p>
+        {% endif %}
+
+    </div>
+    </div>
+    
+</body>
+
+</html>
