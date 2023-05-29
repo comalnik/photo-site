@@ -1,2 +1,2 @@
 # Photo site
-A simple photo gallery web app written in flask, without javascript.
+My custom version that displays Fuji film simulation modes, that i also use on my server.
