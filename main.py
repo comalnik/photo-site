@@ -146,4 +146,4 @@ def image(image):
     return render_template("image.html", link=image, metadata=exif_data_list, film_sim=film_value)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

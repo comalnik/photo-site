@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Photo gallery</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/style.css')}}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='elements/favicon.ico')}}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     
@@ -10,15 +12,23 @@
 
         @font-face {
             font-family: Overpass;
-            src: url("{{url_for('static', filename='overpass-mono-regular.otf')}}") format("opentype");
+            src: url("{{url_for('static', filename='elements/overpass-mono-regular.otf')}}") format("opentype");
         }
         
         @font-face {
             font-family: Overpass;
             font-weight: light;
-            src: url("{{url_for('static', filename='overpass-mono-light.otf')}}") format("opentype");
+            src: url("{{url_for('static', filename='elements/overpass-mono-light.otf')}}") format("opentype");
         }
-        
+
+        .footer-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer {
+        margin: 0 10px;
+    }
         </style>
 
 </head>
@@ -55,6 +65,14 @@
     </div>
 
 </div>
+<div class="divider-line"></div>
+
+
+<div class="footer-container">
+<h1 class="footer" style="font-family:overpass; color:white; text-align:center; font-size:15px; ">Made with ♥ by Comalnik</h1>
+<h1 class="footer" style="font-family:overpass; color:white; text-align:center; font-size:15px;"><a href="https://github.com/Comalnik/photo-site">Source code</a></h1>
+</div>
+
 </body>
 
 </html>
