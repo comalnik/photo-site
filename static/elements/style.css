@@ -121,3 +121,20 @@
 ::-webkit-scrollbar-track:hover {
   background-color: #363a4f;
 }
+
+
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  margin: 0 10px;
+}
+.footer-link {
+  color: #89b4fa;
+}
+.footer-link:visited {
+  color: #cba6f7;
+}
