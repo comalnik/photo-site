@@ -1,2 +1,2 @@
-# Photo site
-My custom version that displays Fuji film simulation modes, that i also use on my server.
+# Fuji Photo site
+A version of [photo-site](https://github.com/comalnik/photo-site) that displays Fuji film simulation modes.
