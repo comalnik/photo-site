@@ -4,6 +4,7 @@ import os
 import piexif
 from PIL import Image
 from PIL.ExifTags import TAGS
+import imghdr
 
 MAXSIZE = 1000
 EXIFPARAMS = "Artist", "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "FocalPlaneXResolution", "FocalPlaneYResolution", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength", "FocalLengthIn35mmFilm"
@@ -32,13 +33,18 @@ def home():
         resized_image = image.resize((new_width, new_height))
         resized_image.save(output_path, optimize=True, quality=80)
 
-    #remove gps data
-    for i in images:
-        img = piexif.load(cdpath+'/static/images/'+i)
-        if 'GPS' in img:
-            del img['GPS']
-            exif_bytes = piexif.dump(img)
-            piexif.insert(exif_bytes, cdpath+'/static/images/'+i)
+
+        
+        #removes gps data from jpeg images
+        for i in images:
+            if imghdr.what(cdpath+'/static/images/'+i) != "jpeg":
+                pass
+            else:
+                img = piexif.load(cdpath+'/static/images/'+i)
+                if 'GPS' in img:
+                    del img['GPS']
+                    exif_bytes = piexif.dump(img)
+                    piexif.insert(exif_bytes, cdpath+'/static/images/'+i)
 
     #checks for new images, and makes thumbnails
     if set(images) != set(thumbs):
@@ -79,4 +85,4 @@ def image(image):
     return render_template("image.html", link=image, metadata=exif_data_list)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
