@@ -3,38 +3,30 @@
 <head>
     <title>Photo gallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/style.css')}}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='elements/favicon.ico')}}">
 
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', filename='elements/favicon-512x512.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='elements/favicon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='elements/favicon-32x32.png')}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     
     <style>
 
-        @font-face {
-            font-family: Overpass;
-            src: url("{{url_for('static', filename='elements/overpass-mono-regular.otf')}}") format("opentype");
-        }
-        
-        @font-face {
-            font-family: Overpass;
-            font-weight: light;
-            src: url("{{url_for('static', filename='elements/overpass-mono-light.otf')}}") format("opentype");
+
+            @font-face {
+            font-family: 'Quicksand';
+            src: url("{{url_for('static', filename='elements/quicksand.ttf')}}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-        .footer-container {
-        display: flex;
-        justify-content: center;
-    }
+        @font-face {
+            font-family: 'Maple';
+            src: url("{{url_for('static', filename='elements/maple.woff2')}}") format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    .footer {
-        margin: 0 10px;
-    }
-    .footer-link {
-        color: #89b4fa;
-    }
-    .footer-link:visited {
-        color: #cba6f7;
-    }
   
   </style>
 
@@ -43,9 +35,9 @@
 </head>
 
 
-<body style="background-color:#181926;">
+<body style="background-color:#1D1F21;">
 
-<h1 class="title" style="font-family:overpass, light;">Photo gallery</h1>
+<h1 class="title" style="font-family:quicksand;">Photo gallery</h1>
 
 <div class="divider-line"></div>
 
@@ -78,8 +70,10 @@
 
 
 <div class="footer-container">
-<h1 class="footer" style="font-family:overpass; color:white; text-align:center; font-size:15px; ">Made with ♥ by Comalnik</h1>
-<h1 class="footer" style="font-family:overpass; color:white; text-align:center; font-size:15px;"><a class="footer-link" target="_blank" href="https://github.com/Comalnik/photo-site">Source code</a></h1>
+<h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px; ">Made with ♥ by Comalnik</h1>
+<!--<h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px;">© 2019-2023 Comalnik</h1> -->
+
+<h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px;"><a class="footer-link" target="_blank" href="https://github.com/Comalnik/photo-site">Source code</a></h1>
 </div>
 
 </body>

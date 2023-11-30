@@ -5,6 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/image.css')}}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='elements/favicon.ico')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', filename='elements/favicon-512x512.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='elements/favicon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='elements/favicon-32x32.png')}}
     <meta charset="UTF-8" />
 
 
@@ -13,16 +16,21 @@
 body {
     background-color:#181926;
 }
-@font-face {
-    font-family: Overpass;
-    src: url("{{url_for('static', filename='elements/overpass-mono-regular.otf')}}") format("opentype");
-}
+
 
 @font-face {
-    font-family: Overpass;
-    font-weight: light;
-    src: url("{{url_for('static', filename='elements/overpass-mono-light.otf')}}") format("opentype");
-}
+            font-family: 'Quicksand';
+            src: url("{{url_for('static', filename='elements/quicksand.ttf')}}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+@font-face {
+            font-family: 'Maple';
+            src: url("{{url_for('static', filename='elements/maple.woff2')}}") format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
 
 </style>
 
@@ -46,14 +54,14 @@ body {
     
 
     <div class="sidebar">
-        <a class="homebtn" href="/" style="font-family: Overpass;"><button style="font-family: Overpass; font-size:45%;" class="gradient-button rainbowText">GALLERY</button></a>
+        <a class="homebtn" href="/" style="font-family: maple;"><button style="font-family: maple; font-size:45%;" class="gradient-button rainbowText">gallery</button></a>
 
         
-        <div class="container" style="font-family: Overpass, light;">
+        <div class="container" style="font-family: maple, light;">
         {% for tag, value in metadata %}
  
 
-        <p><strong style="color:#a6da95;">{{ tag }}:</strong> {{ value }}</p>
+        <p><strong style="color:#b7bdf8;">{{ tag }}:</strong> {{ value }}</p>
         
         {% endfor %}
 

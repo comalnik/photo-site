@@ -11,7 +11,7 @@
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
-  border-radius: 12px;
+  border-radius: 8px;
 
 }
 
@@ -90,7 +90,7 @@
 }
 
 .title {
- color: #a6da95;
+ color: #b7bdf8;
  font-size: 60px;
  text-align: center;
  margin-top: 8px;
@@ -100,28 +100,27 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  background-color: #1e2030;
+  width: auto;
+  background-color: #272a2d;
 }
 
 
 ::-webkit-scrollbar-thumb {
-  background-color: #8087a2;
+  background-color: #5c6269;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #939ab7;
+  background-color: #646b72;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #24273a;
+  background-color: #2c2f32;
 }
 
 ::-webkit-scrollbar-track:hover {
-  background-color: #363a4f;
+  background-color: #303336;
 }
-
 
 
 .footer-container {
@@ -138,3 +137,4 @@
 .footer-link:visited {
   color: #cba6f7;
 }
+
