@@ -37,11 +37,14 @@ def home():
 
     #remove gps data
     for i in images:
-        img = piexif.load(cdpath+'/static/images/'+i)
-        if 'GPS' in img:
-            del img['GPS']
-            exif_bytes = piexif.dump(img)
-            piexif.insert(exif_bytes, cdpath+'/static/images/'+i)
+        try:
+            img = piexif.load(cdpath+'/static/images/'+i)
+            if 'GPS' in img:
+                del img['GPS']
+                exif_bytes = piexif.dump(img)
+                piexif.insert(exif_bytes, cdpath+'/static/images/'+i)
+        except:
+            pass
 
     #checks for new images, and makes thumbnails
     if set(images) != set(thumbs):
@@ -141,6 +144,8 @@ def image(image):
         film_value = ""
     else:
         film_value = get_output(film_simulation[0])
+    
+    print("film sim", film_value)
     
 
     return render_template("image.html", link=image, metadata=exif_data_list, film_sim=film_value)
