@@ -12,9 +12,7 @@ body, html {
     width: 100%;
     max-width: 500px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background-color:#1D1F21;
     transition: left 0.3s ease-in-out;
     overflow: hidden;
 
@@ -31,26 +29,23 @@ body, html {
 
   .sidebar-toggle-label span {
     display: block;
-    width: 40px;
-    height: 6px;
-    margin-bottom: 6px;
+    width: 44px;
+    height: 7px;
+    margin-bottom: 7px;
     background-color: #b7bdf8;
+    /*border: 1px solid #1D1F21;*/
     transition: transform 0.2s ease-in-out;
     border-radius: 8px;
   }
-  /* hell */
+
   input[type="checkbox"]:checked ~ .sidebar {
     left: 0;
   }
   
 
- 
-
-
-
 
 .sidebar-toggle-label:hover span {
-  transform: scaleX(1.1);
+  transform: scaleX(1.13);
 }
 
 
@@ -69,9 +64,12 @@ body, html {
   width: 100%;
   max-width: 500px;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+
+  /*background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  */
+  background-color:#1D1F21;
   transition: left 0.3s ease-in-out;
   overflow: hidden;
 }
@@ -83,13 +81,19 @@ body, html {
 
   .container {
     margin-top: 85px;
-    height:94%;
+    height:calc(100% - 85px);
     width:97%;
     margin-left: 15px;
-    color: #b7bdf8;
+    color: #cdd6f4;
     font-size: 25px;
     word-wrap: break-word;
-    overflow: auto;
+    overflow: scroll;
+    overflow-y:scroll;
+
+  }
+  .container p{
+    margin-top: 15px;
+    margin-bottom: 15px;
 
   }
 
@@ -128,16 +132,20 @@ body, html {
 
 
 .gradient-button {
-  background: linear-gradient(to right, #ffb084, #b7bdf8);
-  color: #fff;
+  color: #1D1F21;
   padding: 7px 14px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  background-size: 200% auto; 
+  transition: 0.5s;
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%)
 }
 
-.rainbowText:hover{background-image: linear-gradient(to right, #ffb084, #b7bdf8, #b7bdf8, #ffb084 );animation: gradient-border 2s linear infinite;background-size: 400% 100%;}
-@keyframes gradient-border{0%, 200% {background-position: 0 0;}99.999999999999999% {background-position: -130% 0;}}
+
+.gradient-button:hover { background-position: right center; }
+
 
 
 /* scrollbar */

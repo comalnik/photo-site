@@ -3,37 +3,45 @@
 <head>
     <title>Photo gallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/style.css')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     
     <style>
 
-        @font-face {
-            font-family: Overpass;
-            src: url("{{url_for('static', filename='elements/overpass-mono-regular.otf')}}") format("opentype");
+
+            @font-face {
+            font-family: 'Quicksand';
+            src: url("{{url_for('static', filename='elements/quicksand.ttf')}}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
-        
+
         @font-face {
-            font-family: Overpass;
-            font-weight: light;
-            src: url("{{url_for('static', filename='eelements/overpass-mono-light.otf')}}") format("opentype");
+            font-family: 'Maple';
+            src: url("{{url_for('static', filename='elements/maple.woff2')}}") format('woff2');
+            font-weight: normal;
+            font-style: normal;
         }
-        
-        </style>
+
+  
+  </style>
+
+  
 
 </head>
 
 
-<body style="background-color:#181926;">
+<body style="background-color:#1D1F21; text-align: center;">
 
-<h1 class="title" style="font-family:overpass, light;">Photo gallery</h1>
+<h1 class="title" style="font-family:quicksand;">Photo gallery</h1>
 
 <div class="divider-line"></div>
 
 <div class="gallery">
         
 
-        {% for i in imges %}
+        {% for i in wide %}
+        
         <div class="image">
             <a href="/{{i}}">
                 <image src="{{url_for('static', filename='thumbs/'+i)}}">
@@ -41,10 +49,28 @@
         </div>
         
         {% endfor %}
-          
+
+        {% for i in high %}
+        <div class="image">
+            <a href="/{{i}}">
+                <image src="{{url_for('static', filename='thumbs/'+i)}}">
+            </a>
+        </div>
+
+
+        {% endfor %}
     </div>
 
 </div>
+<div class="divider-line"></div>
+
+
+<div class="footer-container">
+<h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px; ">Made with ♥</h1>
+
+<h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px;"><a class="footer-link" target="_blank" href="https://github.com/Comalnik/photo-site">Source code</a></h1>
+</div>
+
 </body>
 
 </html>
