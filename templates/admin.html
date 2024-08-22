@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Photo gallery</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/style.css')}}">
+    <title>Photo gallery - admin</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements/admin.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     
@@ -32,36 +32,49 @@
 
 
 <body style="background-color:#1D1F21; text-align: center;">
-
-<h1 class="title" style="font-family:quicksand;">Photo gallery</h1>
+    
+<h1 class="title" style="font-family:quicksand; align-items: center;"><a class="homebtn" href="/" style="font-family: maple"><button style="font-family: maple; font-size:45%;" class="gradient-button">gallery</button></a> Photo gallery - Admin page</h1>
 
 <div class="divider-line"></div>
-
+<form id="imageForm" method="POST">
 <div class="gallery">
         
 
         {% for i in wide %}
         
-        <div class="image">
-            <a href="/{{i}}">
-                <image src="{{url_for('static', filename='thumbs/'+i)}}">
-            </a>
+        <div class="image" data-image-name="{{i}}">
+
+ 
+                <img src="{{ url_for('static', filename='thumbs/' + i) }}" class="image1">
+                <button id="{{i}}" value="{{i}}" name="button_id" class="reveal-button"> </button>
         </div>
-        
+
         {% endfor %}
 
         {% for i in high %}
-        <div class="image">
-            <a href="/{{i}}">
-                <image src="{{url_for('static', filename='thumbs/'+i)}}">
-            </a>
+        <div class="image" data-image-name="{{i}}">
+
+                <img src="{{ url_for('static', filename='thumbs/' + i) }}" class="image1">
+                <button id="{{i}}" value="{{i}}" name="button_id" class="reveal-button"> </button>
         </div>
 
 
         {% endfor %}
     </div>
 
+
+
+</form>
+
+
+
+<div class="upload">
+<form action = "/upload" method="POST" enctype="multipart/form-data"> 
+    <input class = "filebtn" type="file" name="file" multiple> 
+    <input class = "filebtn" type = "submit" value="Upload"> 
+</form> 
 </div>
+
 <div class="divider-line"></div>
 
 
@@ -71,10 +84,6 @@
 <h1 class="footer" style="font-family:maple; color:white; text-align:center; font-size:15px;"><a class="footer-link" target="_blank" href="https://github.com/Comalnik/photo-site">Source code</a></h1>
 
 
-<form method="POST">
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-</div>
 
 </body>
 
