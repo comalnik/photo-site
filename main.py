@@ -194,13 +194,15 @@ def upload():
 #image display function
 @app.route("/<image>")
 def image(image):
-    image_path = cdpath + "/static/images/" + image
-    
+    if image not in [os.path.basename(x) for x in glob.glob(cdpath+"/static/images/*")]:
+        return render_template("404.html")
+
+
+    image_path = cdpath + "/static/images/" + image    
     #get metadata and fujifilm film simulation
     try:
         exif_data = get_image_exif(image_path)
         exif_data_list = [(tag_name, value) for tag_name, value in exif_data if tag_name in (EXIFPARAMS)]
-
         film_simulation = extract_film_simulation(image_path)
         if film_simulation is None:
             film_simulation = ""
@@ -217,4 +219,4 @@ def image(image):
     return render_template("image.html", link=image, metadata=exif_data_list, film_sim=film_value)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
