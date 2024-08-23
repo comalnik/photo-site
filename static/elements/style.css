@@ -10,6 +10,43 @@
   position: relative;
 }
 
+.admin_pass {
+  background-color: transparent;
+  color: #a6c1ee;
+  border: none;
+  border-left: 2px solid #a6c1ee;
+  border-bottom: 2px solid #a6c1ee;
+  border-top: none;
+  border-right: none;
+  outline: none;
+}
+
+.admin_pass::placeholder {
+  color: gray;
+  opacity: 1; /* Ensures the placeholder color is not affected by the browser's default opacity */
+}
+
+.passsubmit {
+  color: black;
+  background-color:#a6c1ee;
+  border-radius: 5px;
+  border-style:solid;
+  border-color: #a6c1ee;
+  transition: 0.3s;
+  cursor: pointer;
+
+
+}
+
+.passsubmit:hover {
+  border-color: #fbc2eb;
+  background-color:#fbc2eb;
+
+
+}
+
+
+
 .image img {
   max-width: 100%;
   height: auto;

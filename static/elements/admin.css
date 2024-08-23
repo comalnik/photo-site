@@ -22,19 +22,28 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.3s;
     background-color: #a6c1ee;
     margin-bottom: 5px;
     transform: translatey(-20%);
     
-  }
 
+
+  }
+  .gradient-button:hover {
+    background-color: #fbc2eb;
+
+  }
 
   
   .image {
     max-width: 32vw;
     text-align: center;
     justify-content: center;
+    background-color: #2f3236;
+    margin-bottom: 20px;
+    border-radius: 8px;
+
   }
   .image1 {
     width: 100%;
@@ -95,6 +104,8 @@
       flex-wrap: wrap;
       justify-content: space-between;
       grid-template-columns: repeat(4, 1fr);
+    
+    
       align-items: center;
       text-align: center;
     }
@@ -136,40 +147,81 @@
    margin-bottom: 8px;
   }
 
+
+
+
   .upload {
     color: white;
-    background-color: rgb(25, 62, 143);
+    background-color: #1D1F21;
     padding: 7px;
 
+  }
 
-
+  .file-label {
+    font-size: 25px;
+    color:#a6c1ee;
+    margin-right: 3px;
   }
   
+
   .filebtn {
-    font-size: 16px;
-    background-color: #007BFF;
+    font-size: 18px;
+    background-color: #1D1F21;
     text-align: center;
-    color: white;
+    color: #fbc2eb;
     padding: 9px;
-    border-width: 3px;
-    border-color: white;
+    border-style:solid;
+    border-width: 2px;
+    border-color: #fbc2eb;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px !important;
-    /*opacity: 0;*/
+    transition: 0.3s;
 }
+
+.filebtn:hover {
+  background-color: #fbc2eb;
+  color: #1D1F21;
+}
+
+.file {
+  font-size: 18px;
+  background-color: #1D1F21;
+  text-align: center;
+  color: #a6c1ee;
+  padding: 9px;
+  border-style:solid;
+  border-width: 2px;
+  border-color: #a6c1ee;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+.file:hover {
+  background-color: #a6c1ee;
+  color: #1D1F21;
+
+}
+
+.file::file-selector-button {
+  display: none;
+}
+
+
 
 
   .reveal-button {
     font-size: 30px;
+    margin-top: 8px;
     background-color: #ff0000;
     color: white;
     border: none;
     padding-right: 14px;
-    padding-left: 8px;
+    padding-left: 9px;
     border-radius: 100%;
     cursor: pointer;
-    margin-bottom: 20px !important;
+    margin-bottom: 8px;
     /*opacity: 0;*/
 }
 
