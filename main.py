@@ -1,7 +1,7 @@
 import os
 import glob
 import piexif
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from PIL import Image
 from PIL import ImageFile
 from PIL.ExifTags import TAGS
