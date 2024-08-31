@@ -14,7 +14,6 @@ MAXSIZE = 1000
 #admin password hash
 ADMIN_PASSWORD = 'scrypt:32768:8:1$nBPz5NHgkknIazWl$e33b8faf3edbc1386955b502150b3013fc1051674066d5149e2ab1fdbd484918dfc61321e668ab7534d12dc1a37c472001b0c154c846c2e7cda108cd472697a3'
 EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength","Artist", "FocalLengthIn35mmFilm"
-MAXSIZE = 1000
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__)) + '/static/images/'
