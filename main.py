@@ -12,14 +12,18 @@ from werkzeug.security import check_password_hash
 
 MAXSIZE = 1000
 #admin password hash
-ADMIN_PASSWORD = 'scrypt:32768:8:1$nBPz5NHgkknIazWl$e33b8faf3edbc1386955b502150b3013fc1051674066d5149e2ab1fdbd484918dfc61321e668ab7534d12dc1a37c472001b0c154c846c2e7cda108cd472697a3'
+ADMIN_PASSWORD_HASH = os.environ.get("ADMIN_PASSWORD_HASH")
 EXIFPARAMS = "Make", "Model", "Software", "DateTimeOriginal", "ShutterSpeedValue", "ApertureValue", "BrightnessValue", "FocalLength", "ExifImageWidth", "ExifImageHeight", "ExposureTime", "FNumber", "ISOSpeedRatings", "LensMake", "LensModel", "ImageWidth", "ImageLength","Artist", "FocalLengthIn35mmFilm"
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__)) + '/static/images/'
 cdpath = os.path.dirname(os.path.realpath(__file__))
 
+if not ADMIN_PASSWORD_HASH:
+    raise RuntimeError("ADMIN_PASSWORD_HASH environment variable not set")
 
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 #########functions##################
@@ -123,7 +127,7 @@ def get_output(value):
 
 #######flask app
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "zVEIXdNUqmixcifpxg0IX00pZikYZLTi")
 
 
 #home
@@ -131,10 +135,14 @@ app.secret_key = 'your_secret_key'
 def home():
     if request.method == 'POST':
         # Check the login credentials
-        if check_password_hash(ADMIN_PASSWORD, request.form['password']) == True:
+        if check_password_hash(ADMIN_PASSWORD_HASH, request.form['password']) == True:
             # Save the login status in the session
             session['logged_in'] = True
             return redirect(url_for('admin'))
+
+
+
+
 
 
     images = [os.path.basename(x) for x in glob.glob(cdpath+"/static/images/*")]
@@ -147,7 +155,9 @@ def home():
     #sorts images based on aspect ratio
     high, wide = aspect_ratio_sort()
 
-    return render_template("index.html", wide=wide, high=high)
+    footer = os.getenv("FOOTER")
+
+    return render_template("index.html", wide=wide, high=high, footer=footer)
 
 
 #admin page
@@ -173,6 +183,7 @@ def admin():
     make_thumbnail(images, thumbs)
     #sorts images based on aspect ratio
     high, wide = aspect_ratio_sort()
+
 
     return render_template("admin.html", wide=wide, high=high)
 
@@ -218,4 +229,4 @@ def image(image):
     return render_template("image.html", link=image, metadata=exif_data_list, film_sim=film_value)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=False)
