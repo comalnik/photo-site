@@ -51,11 +51,16 @@ def remove_gps_data(images):
 
 def make_thumbnail(images, thumbs):
     if set(images) != set(thumbs):
-        uniques = set(images) - set(thumbs)
-        for i in uniques:
-            imgdir = cdpath + "/static/images/" + i
-            savedir = cdpath + "/static/thumbs/" + i
-            resize_image(imgdir, savedir, MAXSIZE)
+        if len(set(images)) > len(set(thumbs)):
+            uniques = set(images) - set(thumbs)
+            for i in uniques:
+                imgdir = cdpath + "/static/images/" + i
+                savedir = cdpath + "/static/thumbs/" + i
+                resize_image(imgdir, savedir, MAXSIZE)
+        else:
+            uniques = set(thumbs) - set(images)
+            for i in uniques:
+                os.remove(cdpath + "/static/thumbs/" + i)
 
 
 def aspect_ratio_sort():
