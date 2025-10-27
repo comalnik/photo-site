@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    
+        
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', filename='elements/favicon-512x512.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='elements/favicon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='elements/favicon-32x32.png')}}">
+
+        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 | Photo gallery</title>
+
+
+</head>
+
+<style>
+
+
+@font-face {
+            font-family: 'Quicksand';
+            src: url("{{url_for('static', filename='elements/quicksand.ttf')}}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+@font-face {
+            font-family: 'Maple';
+            src: url("{{url_for('static', filename='elements/maple.woff2')}}") format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+
+background-color:black;
+
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+
+
+
+
+
+
+/*LINKS*/
+a {
+text-decoration: none;
+position: relative;
+display: inline-block;
+margin-bottom: 10px;
+font-family:quicksand;
+font-size:25px;
+font-weight: bold;
+
+color:rgb(26, 255, 26);
+
+
+
+
+}
+a::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+width: 100%;
+height: 2px;
+background:  rgb(26, 255, 26);
+transition: background 0.3s;
+}
+a:hover {
+color: white;
+}
+a:hover::after,
+a:focus::after {
+background:  #8bd5ca;
+}
+
+
+
+
+   /* https://codepen.io/jasonhibbs/pen/dyKEdvY */
+  @layer demo {
+    :root {
+      --blob-size: 600px;
+      --blob-speed: 8s;
+      --blob-speed-scale: calc(0.75 * var(--blob-speed));
+      --blob-speed-move: calc(1 * var(--blob-speed));
+      --blob-speed-rotate: calc(2 * var(--blob-speed));
+      --blob-opacity: 0.5;
+      --blob-blur: 80px;
+      --blob-color-1: hsl(304deg, 100%, 55%);
+      --blob-color-2: hsl(182deg, 100%, 55%);
+      --blob-color-3: hsl(216deg, 100%, 55%);
+    }
+
+
+    .blobs {
+      position: fixed;
+      filter: blur(var(--blob-blur));
+
+      * {
+        backface-visibility: hidden;
+        transform-origin: 50% 50%;
+        transform-style: preserve-3d;
+        will-change: transform;
+        // animation-play-state: paused !important;
+      }
+
+      &:after {
+        // content: '';
+        position: relative;
+        display: block;
+        width: 22rem;
+        height: 38rem;
+        background: hsla(0deg, 0%, 72%, 0.08);
+        backdrop-filter: blur(8rem) saturate(1.6);
+        border-radius: 1.5rem;
+        z-index: 2;
+      }
+    }
+
+    .blob {
+      width: var(--blob-size);
+      height: calc(0.25 * var(--blob-size));
+      background-color: var(--blob-color-1);
+      border-radius: 100%;
+      opacity: var(--blob-opacity);
+      mix-blend-mode: multiply;
+      animation: blob ease-in-out var(--blob-speed-scale) infinite;
+
+      .blobs > :nth-child(2) & {
+        background-color: var(--blob-color-2);
+        animation-delay: calc(-0.8 * var(--blob-speed-scale));
+      }
+
+      .blobs > :nth-child(3) & {
+        background-color: var(--blob-color-3);
+        animation-delay: calc(-0.2 * var(--blob-speed-scale));
+      }
+    }
+
+    @keyframes blob {
+      0%,
+      100% {
+        transform: scale(0.8, 2);
+      }
+      50% {
+        transform: scale(1.4, 0.8);
+      }
+    }
+
+    .blob-rotate {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      animation: blob-rotate linear var(--blob-speed-rotate) infinite alternate;
+
+      &:nth-child(2) {
+        animation-duration: calc(2 * var(--blob-speed-rotate));
+        animation-delay: calc(-1.5 * var(--blob-speed-rotate));
+      }
+
+      &:nth-child(3) {
+        animation-direction: alternate-reverse;
+        animation-duration: calc(0.8 * var(--blob-speed-rotate));
+        animation-delay: calc(-1 * var(--blob-speed-rotate));
+      }
+    }
+
+    @keyframes blob-rotate {
+      0% {
+        transform: translate3d(-50%, -50%, 0) rotateZ(-28deg);
+        transform-origin: 50% 100%;
+      }
+      100% {
+        transform: translate3d(-50%, -50%, 0) rotateZ(28deg);
+        transform-origin: 50% 0%;
+      }
+    }
+
+    .blob-move {
+      animation: blob-move ease-in-out var(--blob-speed-move) infinite;
+
+      .blobs > :nth-child(2) & {
+        animation-delay: calc(-0.8 * var(--blob-speed-move));
+      }
+
+      .blobs > :nth-child(3) & {
+        animation-delay: calc(-0.4 * var(--blob-speed-move));
+      }
+    }
+
+    @keyframes blob-move {
+      0%,
+      100% {
+        transform: translateX(30%);
+      }
+      50% {
+        transform: translateX(-30%);
+      }
+    }
+  }
+
+  @layer demo.support {
+    *,
+    :before,
+    :after {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: dark light;
+      background-color: hsl(216deg, 100%, 2%);
+      block-size: 100%;
+    }
+
+    body {
+      display: grid;
+      place-content: center;
+      min-block-size: 99%;
+      font-family: system-ui, sans-serif;
+      line-height: 1.375;
+      text-align: center;
+    }
+  }
+
+  .back-link::after {
+    content: none !important;
+  }
+  .back-link {
+    z-index: 2;
+  }
+
+
+
+</style>
+
+<body style="background-color: hsl(216deg, 100%, 2%);">
+
+
+
+
+
+<a class="back-link" style="font-family:quicksand; font-size:10vw; color:white; position:absolute; " href="/">404</a>
+
+
+  <div class="blobs" role="presentation">
+
+    <div class="blob-rotate">
+      <div class="blob-move">
+        <div class="blob"></div>
+      </div>
+    </div>
+    <div class="blob-rotate">
+      <div class="blob-move">
+        <div class="blob"></div>
+      </div>
+    </div>
+    <div class="blob-rotate">
+      <div class="blob-move">
+        <div class="blob"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
