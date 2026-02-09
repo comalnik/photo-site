@@ -49,7 +49,12 @@
 
 <body style="background-color:#1D1F21; text-align: center;">
     
-<h1 class="title" style="font-family:quicksand; align-items: center;"><a class="homebtn" href="/" style="font-family: maple"><button style="font-family: maple; font-size:45%;" class="gradient-button">gallery</button></a> Photo gallery - Admin page</h1>
+<h1 class="title" style="font-family:quicksand; align-items: center;"><a class="homebtn" href="/" style="font-family: maple"><button style="font-family: maple; font-size:45%;" class="gradient-button">gallery</button></a> <form method="POST" action="/admin" style="display:inline;">
+    <button type="submit" name="action_thumbs" value="true" style="font-family: maple; font-size:45%;" class="gradient-button">Regenerate Thumbnails</button>
+</form> Photo gallery - Admin page</h1>
+
+
+
 
 <div class="divider-line"></div>
 <form id="imageForm" method="POST">
